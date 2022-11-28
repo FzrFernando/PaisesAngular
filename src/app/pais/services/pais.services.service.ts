@@ -6,14 +6,20 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PaisServicesService {
-
-  private _pais:string[]=[];
-  private url: string = 'https://restcountries.com/v3.1/all'
+  private url: string = 'https://restcountries.com/v3.1/'
   results: Paises[] = [];
+  termino = '';
 
-  constructor() { }
-
-  get pais():string[]{
-    return [...this._pais]
+  constructor(private http: HttpClient) { 
   }
+
+  get pais():Paises[]{
+    return [...this.results]
+  }
+
+  findPais(query:string):void{
+    this.http.get<Paises[]>(`${this.url}/name/${query}`)
+    .subscribe((resp) => this.results = resp)
+  }
+
 }

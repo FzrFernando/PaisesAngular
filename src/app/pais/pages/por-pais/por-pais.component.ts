@@ -9,8 +9,14 @@ import { PaisServicesService } from '../../services/pais.services.service';
 export class PorPaisComponent {
 
   constructor(private paisService:PaisServicesService) { }
+  cadena:string = "";
 
   get results():Paises[]{
     return this.paisService.results
   }
+
+  findPais(query:string):void{
+    this.paisService.findPais(query)
+  }
+
 }
