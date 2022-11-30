@@ -1,25 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Paises } from '../interfaces/searchResponse.interface';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PaisServicesService {
   private url: string = 'https://restcountries.com/v3.1/'
-  results: Paises[] = [];
-  termino = '';
 
   constructor(private http: HttpClient) { 
   }
 
-  get pais():Paises[]{
-    return [...this.results]
+  // get pais():Paises[]{
+  //   return [...this.results]
+  // }
+
+  findPais(query:string):Observable<Paises[]>{
+    return this.http.get<Paises[]>(`${this.url}/name/${query}`)
+    
   }
 
-  findPais(query:string):void{
-    this.http.get<Paises[]>(`${this.url}/name/${query}`)
-    .subscribe((resp) => this.results = resp)
+  country(code:string):Observable<Paises[]>{
+    return this.http.get<Paises[]>(`${this.url}/alpha/${code}`)
   }
 
 }
