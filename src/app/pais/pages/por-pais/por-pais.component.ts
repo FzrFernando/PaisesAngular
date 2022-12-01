@@ -9,7 +9,7 @@ import { PaisServicesService } from '../../services/pais.services.service';
 export class PorPaisComponent {
 
   constructor(private paisService:PaisServicesService) { }
-  cadena:string = "";
+  cadena:string = '';
   countries: Paises[] = []
   textError:string = ''
   error:boolean = false;
@@ -27,7 +27,10 @@ export class PorPaisComponent {
         this.countries = resp
         this.error = false;
       },
-      error: (error) => this.error=true
+      error: (error) => {
+        this.error=true
+        this.countries=[]
+      }
     })
     this.cadena=''
   }

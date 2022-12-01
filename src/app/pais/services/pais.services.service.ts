@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Paises } from '../interfaces/searchResponse.interface';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -23,6 +23,10 @@ export class PaisServicesService {
 
   country(code:string):Observable<Paises[]>{
     return this.http.get<Paises[]>(`${this.url}/alpha/${code}`)
+  }
+
+  findRegion(query:string):Observable<Paises[]>{
+    return this.http.get<Paises[]>(`${this.url}/region/${query}`)
   }
 
 }

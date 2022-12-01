@@ -8,7 +8,7 @@ import { PaisServicesService } from '../../services/pais.services.service';
   templateUrl: './ver-pais.component.html'
 })
 export class VerPaisComponent implements OnInit{
-  pais:any;
+  pais!:Paises;
   code:string=''
   constructor(private paisServices: PaisServicesService, private activeRoute:ActivatedRoute) { 
     

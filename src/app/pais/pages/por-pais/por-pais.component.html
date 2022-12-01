@@ -15,7 +15,7 @@ placeholder="Buscar país...">
     No se encontró nada con el término {{textError}}
 </div>
 
-<table class="table table-hover" *ngIf="findPais.length">
+<table class="table table-hover" *ngIf="!findPais.length">
     <thead>
         <tr>
             <th> # </th>
@@ -26,12 +26,12 @@ placeholder="Buscar país...">
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let pais of countries; let i=index">
+        <tr *ngFor="let cadena of countries; let i=index">
             <td>{{i+1}}</td>
-            <td><img class="small-flag" [src]="pais.flags.png"></td>
-            <td>{{pais.capital}},{{pais.name.common}}</td>
-            <td>{{pais.population|number}}</td>
-            <td><a >Ver...</a></td>
+            <td><img class="small-flag" [src]="cadena.flags.png"></td>
+            <td>{{cadena.capital}},{{cadena.name.common}}</td>
+            <td>{{cadena.population|number}}</td>
+            <td><a href=>Ver...</a></td>
         </tr>
         <!-- <tr > Esto es lo que tenemos que repetir por cada país que encuentre 
             <td> Número </td> Aquí obtendremos el número de resultado 
