@@ -1,1 +1,16 @@
-<p>por-capital works!</p>
+<div *ngIf="countries">
+    <div class="border-right p-3" id="sidebar">
+        <h3>
+            Por Capital
+        </h3>
+    
+        <hr/>
+        <app-busqueda (paisEvento)="buscarCapital($event)"></app-busqueda>
+        <div class="list-group list-reset">
+            <div class="alert alert-danger" *ngIf="error">
+                No se encontró nada con el término {{textError}}
+            </div>
+        <app-tabla [countries]="countries"></app-tabla>
+        </div>
+    </div>
+</div>

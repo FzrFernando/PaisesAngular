@@ -25,8 +25,8 @@ export class PaisServicesService {
     return this.http.get<Paises[]>(`${this.url}/alpha/${code}`)
   }
 
-  findRegion(query:string):Observable<Paises[]>{
-    return this.http.get<Paises[]>(`${this.url}/region/${query}`)
+  findCapital(capital:string):Observable<Paises[]>{
+    return this.http.get<Paises[]>(`${this.url}/capital/${capital}`)
   }
 
 }
